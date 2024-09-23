@@ -69,4 +69,4 @@ const ErrorHandler = (err, req, res, next) => __awaiter(void 0, void 0, void 0, 
     }
     next();
 });
-module.exports = ErrorHandler;
+exports.default = ErrorHandler;

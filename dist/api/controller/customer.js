@@ -23,6 +23,25 @@ class CustomerController {
                 next(err);
             }
         });
+        this.getCustomers = (req, res, next) => __awaiter(this, void 0, void 0, function* () {
+            try {
+                const result = yield this.customer.getCustomers();
+                res.json(result);
+            }
+            catch (err) {
+                next(err);
+            }
+        });
+        this.getCustomer = (req, res, next) => __awaiter(this, void 0, void 0, function* () {
+            try {
+                const { id } = req.params;
+                const result = yield this.customer.getCustomer(id);
+                res.json(result);
+            }
+            catch (err) {
+                next(err);
+            }
+        });
     }
 }
 exports.default = CustomerController;
