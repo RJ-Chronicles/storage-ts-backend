@@ -30,5 +30,32 @@ class CustomerRepository {
             }
         });
     }
+    getCustomers() {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const customers = yield models_1.CustomerModel.find({});
+                return customers;
+            }
+            catch (err) {
+                throw new app_errors_1.APIError("API Error", app_errors_1.STATUS_CODES.INTERNAL_ERROR, "Unable to fetch customer list");
+            }
+        });
+    }
+    getCustomer(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const customer = yield models_1.CustomerModel.findOne({
+                    _id: id,
+                });
+                if (!customer) {
+                    throw new Error("No customer associated with give Id");
+                }
+                return customer;
+            }
+            catch (err) {
+                throw new app_errors_1.APIError("API Error", app_errors_1.STATUS_CODES.INTERNAL_ERROR, "Unable to fetch customer");
+            }
+        });
+    }
 }
 exports.default = CustomerRepository;

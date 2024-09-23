@@ -68,4 +68,4 @@ const ErrorHandler = async (
   next();
 };
 
-module.exports = ErrorHandler;
+export default ErrorHandler;

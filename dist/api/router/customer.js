@@ -15,5 +15,7 @@ exports.default = () => __awaiter(void 0, void 0, void 0, function* () {
     const router = (0, express_1.Router)();
     const customer = new controller_1.CustomerController();
     router.post("/signup", customer.postCustomer);
+    router.get("/list", customer.getCustomers);
+    router.get("/one/:id", customer.getCustomer);
     return router;
 });

@@ -15,6 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const cors_1 = __importDefault(require("cors"));
 const api_1 = require("./api");
+const error_handler_1 = __importDefault(require("./utils/error-handler"));
 exports.default = (app) => __awaiter(void 0, void 0, void 0, function* () {
     app.use(express_1.default.json({ limit: "1mb" }));
     app.use(express_1.default.urlencoded({ extended: true, limit: "1mb" }));
@@ -23,4 +24,5 @@ exports.default = (app) => __awaiter(void 0, void 0, void 0, function* () {
     const customerRout = yield (0, api_1.CustomerRouter)();
     app.use("/v1/customer", customerRout);
     // customer(app);
+    app.use(error_handler_1.default);
 });
